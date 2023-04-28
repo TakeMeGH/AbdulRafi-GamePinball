@@ -5,6 +5,8 @@ using UnityEngine;
 public class BumperController : MonoBehaviour
 {
     [SerializeField] float multiplier;
+    [SerializeField] AudioManager audioManager;
+    [SerializeField] VFXManager vFXManager;
     Color red = Color.red;
     Color green = Color.green;
     Color blue = Color.blue;
@@ -27,6 +29,8 @@ public class BumperController : MonoBehaviour
         if(other.gameObject.tag == "bola"){
             other.gameObject.GetComponent<Rigidbody>().velocity *= multiplier;
             animator.SetTrigger("isHit");
+            audioManager.PlaySFX(transform.position);
+            vFXManager.PlayVFX(other.transform.position);
             Color curColor = rendererMaterial.material.color;
             if(curColor == green){
                 curColor = red;

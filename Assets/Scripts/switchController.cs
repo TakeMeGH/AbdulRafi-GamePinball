@@ -16,6 +16,8 @@ public class switchController : MonoBehaviour
 
   private SwitchState state;
   private Renderer render;
+  [SerializeField] AudioManager audioManager;
+  [SerializeField] VFXManager vFXManager;
 
   private void Start()
   {
@@ -30,6 +32,8 @@ public class switchController : MonoBehaviour
   {
     if (other.gameObject.tag == "bola")
     {
+      audioManager.PlaySwitchSFX(transform.position);
+      vFXManager.PlaySwitchVFX(transform.position);
       Toggle();
     }
   }
