@@ -16,7 +16,6 @@ public class VFXManager : MonoBehaviour
     public void PlaySwitchVFX(Vector3 spawnPosition)
 	{
 		// spawn vfx pada posisi sesuai parameter
-        Debug.Log("masuk");
 		GameObject.Instantiate(switchVFX, spawnPosition, Quaternion.identity);
 	}
 }

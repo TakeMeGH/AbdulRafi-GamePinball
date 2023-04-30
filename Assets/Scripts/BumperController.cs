@@ -7,6 +7,8 @@ public class BumperController : MonoBehaviour
     [SerializeField] float multiplier;
     [SerializeField] AudioManager audioManager;
     [SerializeField] VFXManager vFXManager;
+    [SerializeField] ScoreManager scoreManager;
+    const int SCORE = 10;
     Color red = Color.red;
     Color green = Color.green;
     Color blue = Color.blue;
@@ -27,6 +29,7 @@ public class BumperController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "bola"){
+            scoreManager.AddScore(SCORE);
             other.gameObject.GetComponent<Rigidbody>().velocity *= multiplier;
             animator.SetTrigger("isHit");
             audioManager.PlaySFX(transform.position);

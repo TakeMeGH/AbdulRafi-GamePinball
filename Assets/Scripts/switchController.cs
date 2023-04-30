@@ -16,8 +16,9 @@ public class switchController : MonoBehaviour
 
   private SwitchState state;
   private Renderer render;
-  [SerializeField] AudioManager audioManager;
-  [SerializeField] VFXManager vFXManager;
+  [SerializeField] AudioManager audioManager;  [SerializeField] VFXManager vFXManager;
+  [SerializeField] ScoreManager scoreManager;
+  const int SCORE = 10;
 
   private void Start()
   {
@@ -34,6 +35,7 @@ public class switchController : MonoBehaviour
     {
       audioManager.PlaySwitchSFX(transform.position);
       vFXManager.PlaySwitchVFX(transform.position);
+      scoreManager.AddScore(SCORE);
       Toggle();
     }
   }
